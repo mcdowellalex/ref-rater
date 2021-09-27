@@ -22,10 +22,21 @@ access_token = data['access_token'] # used for API requests
 
 
 # ----------------- HTTPS requests ------------------
-getRequestURL = 'https://football.elenasport.io/v2/countries'
+premLeagueID = 234   
+PL_21_22_seasonID = 4210
+ 
+getRequestURL = 'https://football.elenasport.io/v2/seasons/4210/fixtures?&from=2021-09-24&to=2021-09-25'
 getAuthorization = 'Bearer ' + access_token
 response = requests.get(getRequestURL, headers={'Authorization':getAuthorization})
 
 print(response.json())
 
 
+# gives fixtures for a season ID in a date range
+# https://football.elenasport.io/v2/seasons/{seasonID}/fixtures?&from=YYYY-MM-DD&to=YYYY=MM-DD
+# example: https://football.elenasport.io/v2/seasons/4210/fixtures?&from=2021-09-24&to=2021-09-25
+
+
+# gives seasonID's for specified league ID
+# https://football.elenasport.io/v2/leagues/{ID}/seasons
+# example: https://football.elenasport.io/v2/leagues/234/seasons
