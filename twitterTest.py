@@ -3,8 +3,14 @@ from requests_oauthlib import OAuth1Session
 # import tweepy
 import json
 
-consumer_key = 'juouDAV69bmzUVON7S0XvB6oC'  # Add your API key here
-consumer_secret = 'ovNWl0wPAA123QcrVgq7fFQbP4O0lN1OXHBvHu473WdiXDf3lS'  # Add your API secret key here
+# get auth data from auth file
+with open('auth.json', 'r') as myfile:
+    data=myfile.read()
+    dataJSON = json.loads(data)
+    authJSON = dataJSON['twitter']
+
+consumer_key = authJSON['consumer-key']
+consumer_secret = authJSON['consumer-secret']
 
 
 params = {"q": "#blm", 'count': 2}
