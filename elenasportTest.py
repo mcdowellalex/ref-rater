@@ -25,11 +25,14 @@ access_token = data['access_token'] # used for API requests
 premLeagueID = 234   
 PL_21_22_seasonID = 4210
  
-getRequestURL = 'https://football.elenasport.io/v2/seasons/4210/fixtures?&from=2021-09-24&to=2021-09-25'
+getRequestURL = 'https://football.elenasport.io/v2/seasons/4210/fixtures?&from=2021-10-12&to=2021-10-27'
 getAuthorization = 'Bearer ' + access_token
 response = requests.get(getRequestURL, headers={'Authorization':getAuthorization})
 
-print(response.json())
+# currently the fixtures is not saving the referees. this prints out None for every fixture
+fixtures = response.json()['data']
+for fixture in fixtures:
+    print(fixture['referees'])
 
 
 # gives fixtures for a season ID in a date range
